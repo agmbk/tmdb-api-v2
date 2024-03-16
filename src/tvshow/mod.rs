@@ -1,3 +1,9 @@
+use crate::common::country::Country;
+use crate::common::language::Language;
+use crate::company::CompanyShort;
+use crate::genre::Genre;
+use crate::people::PersonShort;
+
 #[cfg(feature = "commands")]
 pub mod details;
 #[cfg(feature = "commands")]
@@ -14,13 +20,9 @@ pub mod similar;
 pub mod watch_providers;
 
 pub mod episode;
+pub mod external_ids;
+pub mod keywords;
 pub mod season;
-
-use crate::common::country::Country;
-use crate::common::language::Language;
-use crate::company::CompanyShort;
-use crate::genre::Genre;
-use crate::people::PersonShort;
 
 #[derive(Clone, Debug, PartialEq, Deserialize, Serialize)]
 pub struct TVShowBase {
@@ -31,7 +33,7 @@ pub struct TVShowBase {
     pub origin_country: Vec<String>,
     #[serde(default)]
     pub overview: Option<String>,
-    #[serde(with = "crate::util::empty_date")]
+    #[serde(deserialize_with = "crate::util::empty_string::deserialize")]
     pub first_air_date: Option<chrono::NaiveDate>,
     #[serde(default)]
     pub poster_path: Option<String>,
@@ -53,7 +55,6 @@ pub struct TVShowShort {
 
 #[derive(Clone, Debug, PartialEq, Deserialize, Serialize)]
 pub struct EpisodeShort {
-    #[serde(with = "crate::util::date")]
     pub air_date: chrono::NaiveDate,
     pub episode_number: u64,
     pub id: u64,
@@ -78,7 +79,7 @@ pub struct Episode {
 
 #[derive(Clone, Debug, PartialEq, Deserialize, Serialize)]
 pub struct SeasonBase {
-    #[serde(with = "crate::util::optional_date")]
+    #[serde(deserialize_with = "crate::util::empty_string::deserialize")]
     pub air_date: Option<chrono::NaiveDate>,
     pub id: u64,
     pub name: String,
@@ -108,14 +109,13 @@ pub struct Season {
 pub struct TVShow {
     #[serde(flatten)]
     pub inner: TVShowBase,
-    //
     pub created_by: Vec<PersonShort>,
     pub episode_run_time: Vec<u64>,
     pub genres: Vec<Genre>,
     pub homepage: String,
     pub in_production: bool,
     pub languages: Vec<String>,
-    #[serde(with = "crate::util::optional_date")]
+    #[serde(deserialize_with = "crate::util::empty_string::deserialize")]
     pub last_air_date: Option<chrono::NaiveDate>,
     pub last_episode_to_air: Option<EpisodeShort>,
     pub next_episode_to_air: Option<EpisodeShort>,

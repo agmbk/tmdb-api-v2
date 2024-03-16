@@ -1,3 +1,6 @@
+//! https://developer.themoviedb.org/reference/certification-movie-list
+//! https://developer.themoviedb.org/reference/certifications-tv-list
+
 use std::borrow::Cow;
 use std::collections::HashMap;
 
@@ -6,8 +9,26 @@ use super::Certification;
 const TV_PATH: &str = "/certification/tv/list";
 const MOVIE_PATH: &str = "/certification/movie/list";
 
+/// Command to list genres
+///
+/// ```rust
+/// use tmdb_api::prelude::Command;
+/// use tmdb_api::Client;
+/// use tmdb_api::certification::list::CertificationList;
+///
+/// #[tokio::main]
+/// async fn main() {
+///     let client = Client::new("this-is-my-secret-token".into());
+///     let cmd = CertificationList::tv();
+///     let result = cmd.execute(&client).await;
+///     match result {
+///         Ok(res) => println!("found: {:#?}", res),
+///         Err(err) => eprintln!("error: {:?}", err),
+///     };
+/// }
+/// ```
 #[derive(Clone, Debug, Serialize, Deserialize)]
-pub(crate) struct CertificationResult {
+pub struct CertificationResult {
     pub certifications: HashMap<String, Vec<Certification>>,
 }
 
@@ -49,10 +70,12 @@ impl crate::prelude::Command for CertificationList {
 
 #[cfg(test)]
 mod tests {
-    use super::CertificationList;
+    use mockito::Matcher;
+
     use crate::prelude::Command;
     use crate::Client;
-    use mockito::Matcher;
+
+    use super::CertificationList;
 
     #[tokio::test]
     async fn tv_works() {
@@ -145,9 +168,10 @@ mod tests {
 
 #[cfg(all(test, feature = "integration"))]
 mod integration_tests {
-    use super::CertificationList;
     use crate::prelude::Command;
     use crate::Client;
+
+    use super::CertificationList;
 
     #[tokio::test]
     async fn execute_tv() {
