@@ -1,18 +1,35 @@
-use crate::util::date::format_date;
-use chrono::NaiveDate;
 use std::borrow::Cow;
+
+use chrono::NaiveDate;
 
 const TV_PATH: &str = "/tv/changes";
 const MOVIE_PATH: &str = "/movie/changes";
 const PERSON_PATH: &str = "/person/changes";
 
 /// Command to list changes
+///
+/// ```rust
+/// use tmdb_api::prelude::Command;
+/// use tmdb_api::Client;
+/// use tmdb_api::changes::list::ChangeList;
+///
+/// #[tokio::main]
+/// async fn main() {
+///     let client = Client::new("this-is-my-secret-token".into());
+///     let cmd = ChangeList::tv();
+///     let result = cmd.execute(&client).await;
+///     match result {
+///         Ok(res) => println!("found: {:#?}", res),
+///         Err(err) => eprintln!("error: {:?}", err),
+///     };
+/// }
+/// ```
 #[derive(Clone, Debug, Default)]
 pub struct ChangeList {
     path: &'static str,
     /// Filter the results with a start date.
     pub start_date: Option<NaiveDate>,
-    /// Filter the results with a end date.
+    /// Filter the results with an end date.
     pub end_date: Option<NaiveDate>,
     /// Which page to query.
     pub page: Option<u32>,
@@ -73,10 +90,10 @@ impl crate::prelude::Command for ChangeList {
     fn params(&self) -> Vec<(&'static str, Cow<'_, str>)> {
         let mut res = Vec::with_capacity(3);
         if let Some(ref start_date) = self.start_date {
-            res.push(("start_date", Cow::Owned(format_date(start_date))));
+            res.push(("start_date", Cow::Owned(start_date.to_string())));
         }
         if let Some(ref end_date) = self.end_date {
-            res.push(("end_date", Cow::Owned(format_date(end_date))));
+            res.push(("end_date", Cow::Owned(end_date.to_string())));
         }
         if let Some(page) = self.page {
             res.push(("page", Cow::Owned(page.to_string())));
@@ -91,11 +108,13 @@ impl crate::prelude::Command for ChangeList {
 
 #[cfg(test)]
 mod tests {
-    use super::ChangeList;
-    use crate::prelude::Command;
-    use crate::Client;
     use chrono::NaiveDate;
     use mockito::Matcher;
+
+    use crate::Client;
+    use crate::prelude::Command;
+
+    use super::ChangeList;
 
     #[tokio::test]
     async fn tv_works() {
@@ -246,9 +265,10 @@ mod tests {
 
 #[cfg(all(test, feature = "integration"))]
 mod integration_tests {
-    use super::ChangeList;
-    use crate::prelude::Command;
     use crate::Client;
+    use crate::prelude::Command;
+
+    use super::ChangeList;
 
     #[tokio::test]
     async fn execute_tv() {
