@@ -5,6 +5,8 @@ use crate::genre::Genre;
 use crate::people::PersonShort;
 
 #[cfg(feature = "commands")]
+pub mod content_rating;
+#[cfg(feature = "commands")]
 pub mod details;
 #[cfg(feature = "commands")]
 pub mod images;
@@ -18,8 +20,6 @@ pub mod search;
 pub mod similar;
 #[cfg(feature = "commands")]
 pub mod watch_providers;
-#[cfg(feature = "commands")]
-pub mod content_rating;
 
 pub mod episode;
 pub mod season;
