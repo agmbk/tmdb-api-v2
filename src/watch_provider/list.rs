@@ -97,9 +97,9 @@ impl crate::prelude::Command for WatchProviderList {
 mod tests {
     use mockito::Matcher;
 
-    use crate::Client;
     use crate::common::MediaType;
     use crate::prelude::Command;
+    use crate::Client;
 
     use super::WatchProviderList;
 
@@ -196,9 +196,9 @@ mod tests {
 
 #[cfg(all(test, feature = "integration"))]
 mod integration_tests {
-    use crate::Client;
     use crate::common::MediaType;
     use crate::prelude::Command;
+    use crate::Client;
 
     use super::WatchProviderList;
 
