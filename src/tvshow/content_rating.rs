@@ -12,7 +12,7 @@ use std::borrow::Cow;
 ///
 /// #[tokio::main]
 /// async fn main() {
-/// 	let client = Client::<ReqwestExecutor>::new("this-is-my-secret-token".into());
+///     let client = Client::<ReqwestExecutor>::new("this-is-my-secret-token".into());
 ///     let cmd = TVShowContentRating::new(1);
 ///     let result = cmd.execute(&client).await;
 ///     match result {
@@ -61,11 +61,11 @@ impl crate::prelude::Command for TVShowContentRating {
 mod tests {
     use mockito::Matcher;
 
+    use crate::client::reqwest::ReqwestExecutor;
     use crate::prelude::Command;
     use crate::Client;
-	use crate::client::reqwest::ReqwestExecutor;
 
-	use super::TVShowContentRating;
+    use super::TVShowContentRating;
 
     #[tokio::test]
     async fn it_works() {
@@ -148,11 +148,11 @@ mod tests {
 
 #[cfg(all(test, feature = "integration"))]
 mod integration_tests {
+    use crate::client::reqwest::ReqwestExecutor;
     use crate::prelude::Command;
     use crate::Client;
-	use crate::client::reqwest::ReqwestExecutor;
 
-	use super::TVShowContentRating;
+    use super::TVShowContentRating;
 
     #[tokio::test]
     async fn execute() {
