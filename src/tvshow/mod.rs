@@ -7,6 +7,8 @@ use crate::people::PersonShort;
 #[cfg(feature = "commands")]
 pub mod details;
 #[cfg(feature = "commands")]
+pub mod external_ids;
+#[cfg(feature = "commands")]
 pub mod images;
 #[cfg(feature = "commands")]
 pub mod latest;
@@ -20,7 +22,7 @@ pub mod similar;
 pub mod watch_providers;
 
 pub mod episode;
-pub mod external_ids;
+
 pub mod season;
 
 #[derive(Clone, Debug, PartialEq, Deserialize, Serialize)]
