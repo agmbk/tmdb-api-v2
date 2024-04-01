@@ -23,6 +23,7 @@ pub struct PaginatedResult<T> {
 pub enum MediaType {
     Movie,
     Tv,
+    Collection,
 }
 
 impl Display for MediaType {
@@ -30,6 +31,7 @@ impl Display for MediaType {
         let s = match self {
             MediaType::Movie => "movie",
             MediaType::Tv => "tv",
+            MediaType::Collection => "collection",
         };
 
         write!(f, "{}", s)
