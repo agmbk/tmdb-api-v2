@@ -43,12 +43,12 @@ impl WatchProviderList {
     }
 
     pub fn with_watch_region(mut self, watch_region: String) -> Self {
-        self.watch_region = Some(watch_region);
+        self.watch_region.replace(watch_region);
         self
     }
 
     pub fn with_language(mut self, language: String) -> Self {
-        self.language = Some(language);
+        self.language.replace(language);
         self
     }
 }
@@ -208,7 +208,7 @@ mod integration_tests {
         let secret = std::env::var("TMDB_TOKEN_V3").unwrap();
         let client = Client::new(secret);
         let mut cmd = WatchProviderList::new(MediaType::Tv);
-        cmd.language = Some("en-US".into());
+        cmd.language.replace("en-US".into());
 
         let result = cmd.execute(&client).await.unwrap();
         assert!(!result.is_empty());
@@ -219,7 +219,7 @@ mod integration_tests {
         let secret = std::env::var("TMDB_TOKEN_V3").unwrap();
         let client = Client::new(secret);
         let mut cmd = WatchProviderList::new(MediaType::Movie);
-        cmd.language = Some("en-US".into());
+        cmd.language.replace("en-US".into());
 
         let result = cmd.execute(&client).await.unwrap();
         assert!(!result.is_empty());

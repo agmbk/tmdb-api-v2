@@ -49,32 +49,32 @@ impl ClientBuilder {
     }
 
     pub fn with_reqwest_client(mut self, client: reqwest::Client) -> Self {
-        self.client = Some(client);
+        self.client.replace(client);
         self
     }
 
     pub fn set_reqwest_client(mut self, client: reqwest::Client) {
-        self.client = Some(client);
+        self.client.replace(client);
     }
 
     pub fn with_api_key(mut self, value: String) -> Self {
-        self.api_key = Some(value);
+        self.api_key.replace(value);
         self
     }
 
     pub fn set_api_key(mut self, value: String) {
-        self.api_key = Some(value);
+        self.api_key.replace(value);
     }
 
     #[cfg(feature = "tokio-rate-limit")]
     pub fn with_requests_per_second(mut self, value: u64) -> Self {
-        self.requests_per_second = Some(value);
+        self.requests_per_second.replace(value);
         self
     }
 
     #[cfg(feature = "tokio-rate-limit")]
     pub fn set_requests_per_second(mut self, value: u64) {
-        self.requests_per_second = Some(value);
+        self.requests_per_second.replace(value);
     }
 
     pub fn build(self) -> Result<Client, ClientBuilderError> {
@@ -168,7 +168,7 @@ impl Client {
 
         params.push(("api_key", Cow::Borrowed(self.api_key.as_str())));
 
-        let url = format!("{}{}", self.base_url, path);
+        let url = format!("{}{path}", self.base_url);
         let res = self.client.get(url).query(&params).send().await?;
 
         let status_code = res.status();

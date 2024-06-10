@@ -195,7 +195,7 @@ mod integration_tests {
         let secret = std::env::var("TMDB_TOKEN_V3").unwrap();
         let client = Client::new(secret);
         let mut cmd = GenreList::tv();
-        cmd.language = Some("en-US".into());
+        cmd.language.replace("en-US".into());
 
         let result = cmd.execute(&client).await.unwrap();
         assert!(!result.is_empty());
@@ -206,7 +206,7 @@ mod integration_tests {
         let secret = std::env::var("TMDB_TOKEN_V3").unwrap();
         let client = Client::new(secret);
         let mut cmd = GenreList::movie();
-        cmd.language = Some("en-US".into());
+        cmd.language.replace("en-US".into());
 
         let result = cmd.execute(&client).await.unwrap();
         assert!(!result.is_empty());
