@@ -46,6 +46,8 @@ impl crate::prelude::Command for TVShowWatchProviders {
 
 #[cfg(test)]
 mod tests {
+    use std::time::Duration;
+
     use mockito::Matcher;
 
     use crate::prelude::Command;
@@ -57,6 +59,9 @@ mod tests {
     async fn it_works() {
         let mut server = mockito::Server::new_async().await;
         let client = Client::builder()
+            .connect_timeout(Duration::from_secs(10))
+            .read_timeout(Duration::from_secs(10))
+            .timeout(Duration::from_secs(20))
             .with_api_key("secret".into())
             .with_base_url(server.url())
             .build()

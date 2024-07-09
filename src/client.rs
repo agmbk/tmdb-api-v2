@@ -53,7 +53,7 @@ impl ClientBuilder {
         self
     }
 
-    pub fn set_reqwest_client(mut self, client: reqwest::Client) {
+    pub fn set_reqwest_client(&mut self, client: reqwest::Client) {
         self.client.replace(client);
     }
 
@@ -62,7 +62,7 @@ impl ClientBuilder {
         self
     }
 
-    pub fn set_api_key(mut self, value: String) {
+    pub fn set_api_key(&mut self, value: String) {
         self.api_key.replace(value);
     }
 
@@ -73,7 +73,7 @@ impl ClientBuilder {
     }
 
     #[cfg(feature = "tokio-rate-limit")]
-    pub fn set_requests_per_second(mut self, value: u64) {
+    pub fn set_requests_per_second(&mut self, value: u64) {
         self.requests_per_second.replace(value);
     }
 

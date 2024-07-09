@@ -17,7 +17,7 @@ pub(crate) fn deserialize<'de, D, T>(deserializer: D) -> Result<Option<T>, D::Er
 where
     D: Deserializer<'de>,
     T: Deserialize<'de> + FromStr,
-    T::Err: std::fmt::Display,
+    <T as FromStr>::Err: std::fmt::Display,
 {
     let value = Option::<String>::deserialize(deserializer)?;
 
@@ -42,7 +42,7 @@ mod tests {
     where
         T: ToString + for<'a> serde::Deserialize<'a> + serde::Serialize,
         T: FromStr,
-        T::Err: std::fmt::Display,
+        <T as FromStr>::Err: std::fmt::Display,
     {
         #[serde(with = "super")]
         value: Option<T>,
