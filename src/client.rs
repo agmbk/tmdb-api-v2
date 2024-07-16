@@ -88,7 +88,11 @@ impl ClientBuilder {
 
         Ok(Client {
             client,
-            base_url,
+            base_url: if base_url.is_empty() {
+                Cow::Borrowed(BASE_URL)
+            } else {
+                base_url
+            },
             api_key,
             #[cfg(feature = "tokio-rate-limit")]
             // Subtract the request interval to ensure that the first request is sent immediately.

@@ -27,7 +27,7 @@ const MOVIE_PATH: &str = "/certification/movie/list";
 ///     };
 /// }
 /// ```
-#[derive(Clone, Debug, Serialize, Deserialize)]
+#[derive(Clone, Debug, Deserialize, Serialize)]
 pub struct CertificationResult {
     pub certifications: HashMap<String, Vec<Certification>>,
 }

@@ -1,4 +1,4 @@
-#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Deserialize, Serialize)]
 pub struct Keyword {
     pub id: u64,
     pub name: String,

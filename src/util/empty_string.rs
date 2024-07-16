@@ -37,7 +37,7 @@ where
 mod tests {
     use std::str::FromStr;
 
-    #[derive(Debug, Serialize, Deserialize)]
+    #[derive(Debug, Deserialize, Serialize)]
     struct TestingStruct<T>
     where
         T: ToString + for<'a> serde::Deserialize<'a> + serde::Serialize,

@@ -21,7 +21,7 @@ where
 
 #[cfg(test)]
 mod tests {
-    #[derive(Debug, Serialize, Deserialize)]
+    #[derive(Debug, Deserialize, Serialize)]
     struct TestingStruct<T>
     where
         T: for<'a> serde::Deserialize<'a> + serde::Serialize + Default,
