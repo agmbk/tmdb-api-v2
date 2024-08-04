@@ -24,7 +24,7 @@ chrono = { version = "0.4", default-features = false, features = [
     "serde",
     "std",
 ] }
-tokio = { version = "1.38.1", default-features = false, optional = true }
+tokio = { version = "1.39.2", default-features = false, optional = true }
 reqwest = { version = "0.11", default-features = false, features = [
     "json",
     "rustls-tls",
@@ -34,6 +34,6 @@ serde = { version = "1.0", features = ["derive"] }
 serde_repr = { version = "0.1" }
 
 [dev-dependencies]
-mockito = { version = "1.4" }
+mockito = { version = "1.5" }
 serde_json = { version = "1.0" }
-tokio = { version = "1.38", features = ["full"] }
+tokio = { version = "1.39", features = ["full"] }
