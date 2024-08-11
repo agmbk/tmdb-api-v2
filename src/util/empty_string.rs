@@ -2,13 +2,13 @@
 
 use std::str::FromStr;
 
-use serde::{Deserialize, Deserializer, Serializer};
+use serde::{de, Deserialize, Deserializer, Serialize, Serializer};
 
 #[allow(dead_code)]
 pub(crate) fn serialize<S, T>(value: &Option<T>, serializer: S) -> Result<S::Ok, S::Error>
 where
     S: Serializer,
-    T: serde::Serialize,
+    T: Serialize,
 {
     serializer.serialize_some(value)
 }
@@ -27,7 +27,7 @@ where
             if value.is_empty() {
                 Ok(None)
             } else {
-                Ok(Some(T::from_str(&value).map_err(serde::de::Error::custom)?))
+                Ok(Some(T::from_str(&value).map_err(de::Error::custom)?))
             }
         }
     }
@@ -35,12 +35,13 @@ where
 
 #[cfg(test)]
 mod tests {
+    use serde::{Deserialize, Serialize};
     use std::str::FromStr;
 
     #[derive(Debug, Deserialize, Serialize)]
     struct TestingStruct<T>
     where
-        T: ToString + for<'a> serde::Deserialize<'a> + serde::Serialize,
+        T: ToString + for<'a> Deserialize<'a> + Serialize,
         T: FromStr,
         <T as FromStr>::Err: std::fmt::Display,
     {

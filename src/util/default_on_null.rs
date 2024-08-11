@@ -1,12 +1,12 @@
 //! Deserializes null as the default value for the type.
 
-use serde::{Deserialize, Deserializer, Serializer};
+use serde::{Deserialize, Deserializer, Serialize, Serializer};
 
 #[allow(dead_code)]
 pub(crate) fn serialize<S, T>(value: &T, serializer: S) -> Result<S::Ok, S::Error>
 where
     S: Serializer,
-    T: serde::Serialize,
+    T: Serialize,
 {
     T::serialize(value, serializer)
 }
@@ -21,10 +21,12 @@ where
 
 #[cfg(test)]
 mod tests {
+    use serde::{Deserialize, Serialize};
+
     #[derive(Debug, Deserialize, Serialize)]
     struct TestingStruct<T>
     where
-        T: for<'a> serde::Deserialize<'a> + serde::Serialize + Default,
+        T: for<'a> Deserialize<'a> + Serialize + Default,
     {
         #[serde(with = "super")]
         value: T,
