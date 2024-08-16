@@ -35,9 +35,10 @@ where
 
 #[cfg(test)]
 mod tests {
-    use serde::{Deserialize, Serialize};
     use std::str::FromStr;
-
+    
+    use serde::{Deserialize, Serialize};
+    
     #[derive(Debug, Deserialize, Serialize)]
     struct TestingStruct<T>
     where
@@ -51,7 +52,7 @@ mod tests {
 
     mod string {
         use super::TestingStruct;
-
+        
         #[test]
         fn should_deserialize() {
             let result: TestingStruct<String> = serde_json::from_str(r#"{"value":null}"#).unwrap();
@@ -80,9 +81,9 @@ mod tests {
 
     mod date {
         use chrono::NaiveDate;
-
+        
         use super::TestingStruct;
-
+        
         #[test]
         fn should_deserialize() {
             let result: TestingStruct<NaiveDate> =
@@ -116,9 +117,9 @@ mod tests {
 
     mod date_time {
         use chrono::{DateTime, NaiveDateTime};
-
+        
         use super::TestingStruct;
-
+        
         #[test]
         fn should_deserialize() {
             let result: TestingStruct<NaiveDateTime> =
