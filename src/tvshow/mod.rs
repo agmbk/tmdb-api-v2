@@ -47,7 +47,7 @@ pub struct TVShowBase {
     pub backdrop_path: Option<String>,
     pub popularity: f64,
     pub vote_count: u64,
-    pub vote_average: f64,
+    pub vote_average: Option<f64>,
     #[serde(default)]
     pub adult: bool,
 }
@@ -111,7 +111,9 @@ pub struct SeasonBase {
     pub overview: Option<String>,
     pub poster_path: Option<String>,
     pub season_number: u64,
-    pub vote_average: f64,
+    // todo: vote_average not present when fetching latest tv shows
+    #[serde(default)]
+    pub vote_average: Option<f64>,
 }
 
 #[derive(Clone, Debug, PartialEq, Deserialize, Serialize)]
