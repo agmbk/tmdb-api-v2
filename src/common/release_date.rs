@@ -17,11 +17,11 @@ pub enum ReleaseDateKind {
 
 #[derive(Debug, Deserialize, Serialize)]
 pub struct ReleaseDate {
-    #[serde(deserialize_with = "crate::util::empty_string::deserialize")]
+    #[serde(deserialize_with = "crate::utils::empty_string::deserialize")]
     pub certification: Option<String>,
-    #[serde(deserialize_with = "crate::util::empty_string::deserialize")]
+    #[serde(deserialize_with = "crate::utils::empty_string::deserialize")]
     pub iso_639_1: Option<String>,
-    #[serde(default, deserialize_with = "crate::util::empty_string::deserialize")]
+    #[serde(default, deserialize_with = "crate::utils::empty_string::deserialize")]
     pub note: Option<String>,
     pub release_date: chrono::DateTime<chrono::Utc>,
     #[serde(rename = "type")]

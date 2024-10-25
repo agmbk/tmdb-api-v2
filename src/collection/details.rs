@@ -57,7 +57,7 @@ pub struct Media {
     pub vote_average: f64,
     #[serde(default)]
     pub vote_count: u64,
-    #[serde(default, deserialize_with = "crate::util::empty_string::deserialize")]
+    #[serde(default, deserialize_with = "crate::utils::empty_string::deserialize")]
     pub release_date: Option<chrono::NaiveDate>,
 }
 

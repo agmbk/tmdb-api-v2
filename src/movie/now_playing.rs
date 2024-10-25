@@ -54,9 +54,9 @@ impl MovieNowPlaying {
 
 #[derive(Clone, Debug, Deserialize, Serialize)]
 pub struct DateRange {
-    #[serde(deserialize_with = "crate::util::empty_string::deserialize")]
+    #[serde(deserialize_with = "crate::utils::empty_string::deserialize")]
     pub maximum: Option<NaiveDate>,
-    #[serde(deserialize_with = "crate::util::empty_string::deserialize")]
+    #[serde(deserialize_with = "crate::utils::empty_string::deserialize")]
     pub minimum: Option<NaiveDate>,
 }
 

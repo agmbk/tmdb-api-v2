@@ -35,4 +35,4 @@ pub mod watch_provider;
 
 pub mod common;
 pub mod configuration;
-mod util;
+mod utils;

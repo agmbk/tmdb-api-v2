@@ -55,7 +55,7 @@ pub struct MovieBase {
     pub original_title: String,
     pub original_language: String,
     pub overview: String,
-    #[serde(default, deserialize_with = "crate::util::empty_string::deserialize")]
+    #[serde(default, deserialize_with = "crate::utils::empty_string::deserialize")]
     pub release_date: Option<chrono::NaiveDate>,
     pub poster_path: Option<String>,
     pub backdrop_path: Option<String>,
@@ -79,9 +79,9 @@ pub struct Movie {
     pub inner: MovieBase,
     pub budget: u64,
     pub genres: Vec<Genre>,
-    #[serde(deserialize_with = "crate::util::empty_string::deserialize")]
+    #[serde(deserialize_with = "crate::utils::empty_string::deserialize")]
     pub homepage: Option<String>,
-    #[serde(deserialize_with = "crate::util::empty_string::deserialize")]
+    #[serde(deserialize_with = "crate::utils::empty_string::deserialize")]
     pub imdb_id: Option<String>,
     pub belongs_to_collection: Option<CollectionBase>,
     pub production_companies: Vec<CompanyShort>,

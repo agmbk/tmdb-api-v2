@@ -26,14 +26,14 @@ pub struct TVShowAggregateCredits {
     pub language: Option<String>,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Deserialize, Serialize)]
 pub struct TVShowAggregateCreditsResult {
     pub id: u64,
     pub cast: Vec<CastPerson>,
     pub crew: Vec<CrewPerson>,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Deserialize, Serialize)]
 pub struct CastPerson {
     pub id: u64,
     pub adult: bool,
@@ -48,7 +48,7 @@ pub struct CastPerson {
     pub order: u64,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Deserialize, Serialize)]
 pub struct CrewPerson {
     pub id: u64,
     pub adult: bool,
@@ -63,14 +63,14 @@ pub struct CrewPerson {
     pub total_episode_count: u64,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Deserialize, Serialize)]
 pub struct Role {
     pub credit_id: String,
     pub character: String,
     pub episode_count: u64,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Deserialize, Serialize)]
 pub struct Job {
     pub credit_id: String,
     pub job: String,

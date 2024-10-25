@@ -54,7 +54,7 @@ impl MovieLists {
 pub struct MovieList {
     pub id: u64,
     pub name: String,
-    #[serde(deserialize_with = "crate::util::empty_string::deserialize")]
+    #[serde(deserialize_with = "crate::utils::empty_string::deserialize")]
     pub description: Option<String>,
     pub list_type: String,
     pub poster_path: Option<String>,

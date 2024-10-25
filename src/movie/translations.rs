@@ -32,11 +32,11 @@ impl MovieTranslations {
 
 #[derive(Debug, Deserialize, Serialize)]
 pub struct TranslationData {
-    #[serde(deserialize_with = "crate::util::empty_string::deserialize")]
+    #[serde(deserialize_with = "crate::utils::empty_string::deserialize")]
     pub title: Option<String>,
-    #[serde(deserialize_with = "crate::util::empty_string::deserialize")]
+    #[serde(deserialize_with = "crate::utils::empty_string::deserialize")]
     pub overview: Option<String>,
-    #[serde(deserialize_with = "crate::util::empty_string::deserialize")]
+    #[serde(deserialize_with = "crate::utils::empty_string::deserialize")]
     pub homepage: Option<String>,
 }
 
