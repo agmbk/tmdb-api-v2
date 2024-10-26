@@ -98,7 +98,7 @@ pub struct EpisodeDetails {
 pub struct Episode {
     #[serde(flatten)]
     pub inner: EpisodeBase,
-    pub show_id: u64,
+    pub show_id: Option<u64>,
     pub episode_type: String,
     #[serde(deserialize_with = "crate::utils::vec_skip_errors::deserialize")]
     pub crew: Vec<CrewPerson>,
