@@ -103,7 +103,7 @@ mod tests {
         assert!(result.total_pages > 0);
         assert!(result.total_results > 0);
         let item = result.results.first().unwrap();
-        assert_eq!(item.inner.title, "The Asphalt Jungle");
+        assert_eq!(item.inner.title, "Force 10 from Navarone");
     }
 
     #[tokio::test]

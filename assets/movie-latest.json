@@ -1,27 +1,41 @@
 {
-    "adult": false,
-    "backdrop_path": null,
-    "belongs_to_collection": null,
-    "budget": 5,
-    "genres": [],
-    "homepage": "",
-    "id": 1236474,
-    "imdb_id": null,
-    "original_language": "en",
-    "original_title": "Better Than Me",
-    "overview": "",
-    "popularity": 0,
-    "poster_path": null,
-    "production_companies": [],
-    "production_countries": [],
-    "release_date": "",
-    "revenue": 0,
-    "runtime": 0,
-    "spoken_languages": [],
-    "status": "Released",
-    "tagline": "",
-    "title": "Better Than Me",
-    "video": false,
-    "vote_average": 0,
-    "vote_count": 0
+  "adult": false,
+  "backdrop_path": null,
+  "belongs_to_collection": null,
+  "budget": 0,
+  "genres": [
+    {
+      "id": 99,
+      "name": "Documentary"
+    }
+  ],
+  "homepage": "",
+  "id": 1378662,
+  "imdb_id": null,
+  "origin_country": [
+    "HU"
+  ],
+  "original_language": "hu",
+  "original_title": "Later in The Clearing",
+  "overview": "In a small Hungarian town painter Péter Molnár leads filmmaker Márton Tarkövi on a journey through meadows, clearings and Molnár’s drawings. The viewer joins them, as they discuss art, time and life itself.",
+  "popularity": 0,
+  "poster_path": null,
+  "production_companies": [],
+  "production_countries": [],
+  "release_date": "",
+  "revenue": 0,
+  "runtime": 72,
+  "spoken_languages": [
+    {
+      "english_name": "Hungarian",
+      "iso_639_1": "hu",
+      "name": "Magyar"
+    }
+  ],
+  "status": "Released",
+  "tagline": "",
+  "title": "Later in The Clearing",
+  "video": false,
+  "vote_average": 0,
+  "vote_count": 0
 }

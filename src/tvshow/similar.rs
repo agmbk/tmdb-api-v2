@@ -100,10 +100,10 @@ mod tests {
         let result = cmd.execute(&client).await.unwrap();
         assert_eq!(result.page, 1);
         assert_eq!(result.results.len(), 20);
-        assert_eq!(result.total_pages, 2074);
-        assert_eq!(result.total_results, 41463);
+        assert_eq!(result.total_pages, 2331);
+        assert_eq!(result.total_results, 46606);
         let item = result.results.first().unwrap();
-        assert_eq!(item.inner.name, "Sunset Vibes");
+        assert_eq!(item.inner.name, "The Helicopter Heist");
     }
 
     #[tokio::test]

@@ -8,7 +8,7 @@ pub struct WatchProvider {
     pub provider_id: u64,
     pub provider_name: String,
     pub display_priority: u64,
-    pub logo_path: String,
+    pub logo_path: Option<String>,
 }
 
 #[derive(Clone, Debug, Deserialize, Serialize)]
