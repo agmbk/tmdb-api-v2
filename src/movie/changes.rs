@@ -1,6 +1,6 @@
 use std::borrow::Cow;
 
-use chrono::NaiveDate;
+use chrono::{DateTime, NaiveDate, Utc};
 
 /// Command to get changes for a movie
 ///
@@ -68,7 +68,7 @@ pub struct MovieChange {
 pub struct MovieChangeItem {
     pub id: String,
     pub action: String,
-    pub time: chrono::DateTime<chrono::Utc>,
+    pub time: DateTime<Utc>,
     pub iso_639_1: String,
     pub iso_3166_1: String,
     // TODO handle really dynamic kind of values

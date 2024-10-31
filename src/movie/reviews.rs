@@ -1,5 +1,7 @@
 use std::borrow::Cow;
 
+use chrono::{DateTime, Utc};
+
 use crate::common::PaginatedResult;
 
 /// Get the release date along with the certification for a movie.
@@ -47,8 +49,8 @@ pub struct MovieReview {
     pub author_details: AuthorDetails,
     pub content: String,
     pub url: String,
-    pub created_at: chrono::DateTime<chrono::Utc>,
-    pub updated_at: chrono::DateTime<chrono::Utc>,
+    pub created_at: DateTime<Utc>,
+    pub updated_at: DateTime<Utc>,
 }
 
 impl crate::prelude::Command for MovieReviews {

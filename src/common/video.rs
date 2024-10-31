@@ -1,3 +1,5 @@
+use chrono::{DateTime, Utc};
+
 #[derive(Clone, Debug, Deserialize, Serialize)]
 pub struct Video {
     pub id: String,
@@ -6,7 +8,7 @@ pub struct Video {
     pub kind: String,
     pub site: String,
     pub key: String,
-    pub published_at: chrono::DateTime<chrono::Utc>,
+    pub published_at: DateTime<Utc>,
     pub size: u64,
     pub iso_639_1: String,
     pub iso_3166_1: String,

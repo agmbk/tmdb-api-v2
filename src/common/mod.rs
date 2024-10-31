@@ -1,4 +1,5 @@
-use std::fmt::Display;
+use std::fmt;
+use std::fmt::Debug;
 
 pub mod country;
 pub mod credits;
@@ -26,14 +27,14 @@ pub enum MediaType {
     Collection,
 }
 
-impl Display for MediaType {
-    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+impl fmt::Display for MediaType {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         let s = match self {
             MediaType::Movie => "movie",
             MediaType::Tv => "tv",
             MediaType::Collection => "collection",
         };
 
-        write!(f, "{}", s)
+        write!(f, "{s}")
     }
 }

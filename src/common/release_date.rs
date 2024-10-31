@@ -1,3 +1,5 @@
+use chrono::{DateTime, Utc};
+
 #[derive(Debug, Deserialize, Serialize)]
 pub struct LocatedReleaseDates {
     pub iso_3166_1: String,
@@ -23,7 +25,7 @@ pub struct ReleaseDate {
     pub iso_639_1: Option<String>,
     #[serde(default, deserialize_with = "crate::utils::empty_string::deserialize")]
     pub note: Option<String>,
-    pub release_date: chrono::DateTime<chrono::Utc>,
+    pub release_date: DateTime<Utc>,
     #[serde(rename = "type")]
     pub kind: ReleaseDateKind,
 }
