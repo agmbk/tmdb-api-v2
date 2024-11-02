@@ -25,7 +25,7 @@ chrono = { version = "0.4", default-features = false, features = [
     "std",
 ] }
 tokio = { version = "1.41.0", default-features = false, optional = true }
-reqwest = { version = "0.12.8", default-features = false, features = [
+reqwest = { version = "0.12.9", default-features = false, features = [
     "json",
     "rustls-tls",
 ], optional = true }
